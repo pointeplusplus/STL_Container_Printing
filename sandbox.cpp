@@ -24,11 +24,11 @@
 
 using namespace std;
 
-void print_vector_of_ints(string message, vector<int> vector_of_ints);
-void print_vector_of_chars(string message, vector<char> vector_of_chars);
-void print_vector_of_strings(string message, vector<string> vector_of_strings);
-void print_vector_of_floats(string message, vector<float> vector_of_floats);
-void print_vector_of_doubles(string message, vector<double> vector_of_doubles);
+void print_vector_of_ints(string message, const vector<int>& vector_of_ints);
+void print_vector_of_chars(string message, const vector<char>& vector_of_chars);
+void print_vector_of_strings(string message, const vector<string>& vector_of_strings);
+void print_vector_of_floats(string message, const vector<float>& vector_of_floats);
+void print_vector_of_doubles(string message, const vector<double>& vector_of_doubles);
 
 void print_list_of_ints(string message, list<int> list_of_ints);
 void print_list_of_chars(string message, list<char> list_of_chars);
@@ -114,7 +114,7 @@ int main(int argc, char* argv[]){
 
 //=================================VECTORS===============================================
 
-void print_vector_of_ints(string message, vector<int> vector_of_ints){
+void print_vector_of_ints(string message, const vector<int>& vector_of_ints){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_ints.size() -1; v++){
@@ -124,7 +124,7 @@ void print_vector_of_ints(string message, vector<int> vector_of_ints){
 	cout << "-----------------------------------------------------------------" << endl;
 }
 
-void print_vector_of_chars(string message, vector<char> vector_of_chars){
+void print_vector_of_chars(string message, const vector<char>& vector_of_chars){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_chars.size() -1; v++){
@@ -134,7 +134,7 @@ void print_vector_of_chars(string message, vector<char> vector_of_chars){
 	cout << "-----------------------------------------------------------------" << endl;
 }	
 
-void print_vector_of_strings(string message, vector<string> vector_of_strings){
+void print_vector_of_strings(string message, const vector<string>& vector_of_strings){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_strings.size() -1; v++){
@@ -144,7 +144,7 @@ void print_vector_of_strings(string message, vector<string> vector_of_strings){
 	cout << "-----------------------------------------------------------------" << endl;
 }
 
-void print_vector_of_floats(string message, vector<float> vector_of_floats){
+void print_vector_of_floats(string message, const vector<float>& vector_of_floats){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_floats.size() -1; v++){
@@ -154,7 +154,7 @@ void print_vector_of_floats(string message, vector<float> vector_of_floats){
 	cout << "-----------------------------------------------------------------" << endl;
 }
 
-void print_vector_of_doubles(string message, vector<double> vector_of_doubles){
+void print_vector_of_doubles(string message, const vector<double>& vector_of_doubles){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_doubles.size() -1; v++){
