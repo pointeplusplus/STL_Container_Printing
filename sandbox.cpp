@@ -24,23 +24,23 @@
 
 using namespace std;
 
-void print_vector_of_ints(string message, const vector<int>& vector_of_ints);
-void print_vector_of_chars(string message, const vector<char>& vector_of_chars);
-void print_vector_of_strings(string message, const vector<string>& vector_of_strings);
-void print_vector_of_floats(string message, const vector<float>& vector_of_floats);
-void print_vector_of_doubles(string message, const vector<double>& vector_of_doubles);
+void print_vector_of_ints(const string& message, const vector<int>& vector_of_ints);
+void print_vector_of_chars(const string& message, const vector<char>& vector_of_chars);
+void print_vector_of_strings(const string& message, const vector<string>& vector_of_strings);
+void print_vector_of_floats(const string& message, const vector<float>& vector_of_floats);
+void print_vector_of_doubles(const string& message, const vector<double>& vector_of_doubles);
 
-void print_list_of_ints(string message, list<int> list_of_ints);
-void print_list_of_chars(string message, list<char> list_of_chars);
-void print_list_of_strings(string message, list<string> list_of_strings);
-void print_list_of_floats(string message, list<float> list_of_floats);
-void print_list_of_doubles(string message, list<double> list_of_doubles);
+void print_list_of_ints(const string& message, const list<int>& list_of_ints);
+void print_list_of_chars(const string& message, const list<char>& list_of_chars);
+void print_list_of_strings(const string& message, const list<string>& list_of_strings);
+void print_list_of_floats(const string& message, const list<float>& list_of_floats);
+void print_list_of_doubles(const string& message, const list<double>& list_of_doubles);
 
-void print_set_of_ints(string message, set<int> set_of_ints);
-void print_set_of_chars(string message, set<char> set_of_chars);
-void print_set_of_strings(string message, set<string> set_of_strings);
-void print_set_of_floats(string message, set<float> set_of_floats);
-void print_set_of_doubles(string message, set<double> set_of_doubles);
+void print_set_of_ints(const string& message, const set<int>& set_of_ints);
+void print_set_of_chars(const string& message, const set<char>& set_of_chars);
+void print_set_of_strings(const string& message, const set<string> &set_of_strings);
+void print_set_of_floats(const string& message, const set<float>& set_of_floats);
+void print_set_of_doubles(const string& message, const set<double>& set_of_doubles);
 
 int main(int argc, char* argv[]){
 
@@ -114,7 +114,7 @@ int main(int argc, char* argv[]){
 
 //=================================VECTORS===============================================
 
-void print_vector_of_ints(string message, const vector<int>& vector_of_ints){
+void print_vector_of_ints(const string& message, const vector<int>& vector_of_ints){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_ints.size() -1; v++){
@@ -124,7 +124,7 @@ void print_vector_of_ints(string message, const vector<int>& vector_of_ints){
 	cout << "-----------------------------------------------------------------" << endl;
 }
 
-void print_vector_of_chars(string message, const vector<char>& vector_of_chars){
+void print_vector_of_chars(const string& message, const vector<char>& vector_of_chars){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_chars.size() -1; v++){
@@ -134,7 +134,7 @@ void print_vector_of_chars(string message, const vector<char>& vector_of_chars){
 	cout << "-----------------------------------------------------------------" << endl;
 }	
 
-void print_vector_of_strings(string message, const vector<string>& vector_of_strings){
+void print_vector_of_strings(const string& message, const vector<string>& vector_of_strings){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_strings.size() -1; v++){
@@ -144,7 +144,7 @@ void print_vector_of_strings(string message, const vector<string>& vector_of_str
 	cout << "-----------------------------------------------------------------" << endl;
 }
 
-void print_vector_of_floats(string message, const vector<float>& vector_of_floats){
+void print_vector_of_floats(const string& message, const vector<float>& vector_of_floats){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_floats.size() -1; v++){
@@ -154,7 +154,7 @@ void print_vector_of_floats(string message, const vector<float>& vector_of_float
 	cout << "-----------------------------------------------------------------" << endl;
 }
 
-void print_vector_of_doubles(string message, const vector<double>& vector_of_doubles){
+void print_vector_of_doubles(const string& message, const vector<double>& vector_of_doubles){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_doubles.size() -1; v++){
@@ -166,60 +166,60 @@ void print_vector_of_doubles(string message, const vector<double>& vector_of_dou
 
 //=================================LISTS================================================
 
-void print_list_of_ints(string message, list<int> list_of_ints){
+void print_list_of_ints(const string& message, const list<int>& list_of_ints){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
-	list<int>::iterator last_item_itr = list_of_ints.end();
+	list<int>::const_iterator last_item_itr = list_of_ints.end();
 	last_item_itr--;
-	for(list<int>::iterator l = list_of_ints.begin(); l != last_item_itr; l++){
+	for(list<int>::const_iterator l = list_of_ints.begin(); l != last_item_itr; l++){
 		cout << *l << ", ";
 	}
 	cout << *last_item_itr << "]" << endl;
 	cout << "-----------------------------------------------------------------" << endl;
 }
 
-void print_list_of_chars(string message, list<char> list_of_chars){
+void print_list_of_chars(const string& message, const list<char>& list_of_chars){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
-	list<char>::iterator last_item_itr = list_of_chars.end();
+	list<char>::const_iterator last_item_itr = list_of_chars.end();
 	last_item_itr--;
-	for(list<char>::iterator l = list_of_chars.begin(); l != last_item_itr; l++){
+	for(list<char>::const_iterator l = list_of_chars.begin(); l != last_item_itr; l++){
 		cout << *l << ", ";
 	}
 	cout << *last_item_itr << "]" << endl;
 	cout << "-----------------------------------------------------------------" << endl;
 }
 
-void print_list_of_strings(string message, list<string> list_of_strings){
+void print_list_of_strings(const string& message, const list<string>& list_of_strings){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
-	list<string>::iterator last_item_itr = list_of_strings.end();
+	list<string>::const_iterator last_item_itr = list_of_strings.end();
 	last_item_itr--;
-	for(list<string>::iterator l = list_of_strings.begin(); l != last_item_itr; l++){
+	for(list<string>::const_iterator l = list_of_strings.begin(); l != last_item_itr; l++){
 		cout << *l << ", ";
 	}
 	cout << *last_item_itr << "]" << endl;
 	cout << "-----------------------------------------------------------------" << endl;
 }
 
-void print_list_of_floats(string message, list<float> list_of_floats){
+void print_list_of_floats(const string& message, const list<float>& list_of_floats){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
-	list<float>::iterator last_item_itr = list_of_floats.end();
+	list<float>::const_iterator last_item_itr = list_of_floats.end();
 	last_item_itr--;
-	for(list<float>::iterator l = list_of_floats.begin(); l != last_item_itr; l++){
+	for(list<float>::const_iterator l = list_of_floats.begin(); l != last_item_itr; l++){
 		cout << *l << ", ";
 	}
 	cout << *last_item_itr << "]" << endl;
 	cout << "-----------------------------------------------------------------" << endl;
 }
 
-void print_list_of_doubles(string message, list<double> list_of_doubles){
+void print_list_of_doubles(const string& message, const list<double>& list_of_doubles){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
-	list<double>::iterator last_item_itr = list_of_doubles.end();
+	list<double>::const_iterator last_item_itr = list_of_doubles.end();
 	last_item_itr--;
-	for(list<double>::iterator l = list_of_doubles.begin(); l != last_item_itr; l++){
+	for(list<double>::const_iterator l = list_of_doubles.begin(); l != last_item_itr; l++){
 		cout << *l << ", ";
 	}
 	cout << *last_item_itr << "]" << endl;
@@ -228,36 +228,36 @@ void print_list_of_doubles(string message, list<double> list_of_doubles){
 
 //==================================SETS================================================
 
-void print_set_of_ints(string message, set<int> set_of_ints){
+void print_set_of_ints(const string& message, const set<int>& set_of_ints){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
-	set<int>::iterator last_item_itr = set_of_ints.end();
+	set<int>::const_iterator last_item_itr = set_of_ints.end();
 	last_item_itr--;
-	for(set<int>::iterator l = set_of_ints.begin(); l != last_item_itr; l++){
+	for(set<int>::const_iterator l = set_of_ints.begin(); l != last_item_itr; l++){
 		cout << *l << ", ";
 	}
 	cout << *last_item_itr << "]" << endl;
 	cout << "-----------------------------------------------------------------" << endl;
 }
 
-void print_set_of_chars(string message, set<char> set_of_chars){
+void print_set_of_chars(const string& message, const set<char>& set_of_chars){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
-	set<char>::iterator last_item_itr = set_of_chars.end();
+	set<char>::const_iterator last_item_itr = set_of_chars.end();
 	last_item_itr--;
-	for(set<char>::iterator l = set_of_chars.begin(); l != last_item_itr; l++){
+	for(set<char>::const_iterator l = set_of_chars.begin(); l != last_item_itr; l++){
 		cout << *l << ", ";
 	}
 	cout << *last_item_itr << "]" << endl;
 	cout << "-----------------------------------------------------------------" << endl;
 }
 
-void print_set_of_strings(string message, set<string> set_of_strings){
+void print_set_of_strings(const string& message, const set<string>& set_of_strings){
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << message << endl << "[";
-	set<string>::iterator last_item_itr = set_of_strings.end();
+	set<string>::const_iterator last_item_itr = set_of_strings.end();
 	last_item_itr--;
-	for(set<string>::iterator l = set_of_strings.begin(); l != last_item_itr; l++){
+	for(set<string>::const_iterator l = set_of_strings.begin(); l != last_item_itr; l++){
 		cout << *l << ", ";
 	}
 	cout << *last_item_itr << "]" << endl;
