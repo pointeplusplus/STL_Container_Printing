@@ -24,6 +24,8 @@
 
 using namespace std;
 
+//One Dimension
+
 void print_vector_of_ints(const string& message, const vector<int>& vector_of_ints);
 void print_vector_of_chars(const string& message, const vector<char>& vector_of_chars);
 void print_vector_of_strings(const string& message, const vector<string>& vector_of_strings);
@@ -41,6 +43,10 @@ void print_set_of_chars(const string& message, const set<char>& set_of_chars);
 void print_set_of_strings(const string& message, const set<string> &set_of_strings);
 void print_set_of_floats(const string& message, const set<float>& set_of_floats);
 void print_set_of_doubles(const string& message, const set<double>& set_of_doubles);
+
+//Two Dimensions
+
+void print_vector_of_vectors_of_strings(const string& message, const vector<vector<string> >& vector_of_vectors_of_strings);
 
 int main(int argc, char* argv[]){
 
@@ -261,5 +267,43 @@ void print_set_of_strings(const string& message, const set<string>& set_of_strin
 		cout << *l << ", ";
 	}
 	cout << *last_item_itr << "]" << endl;
+	cout << "-----------------------------------------------------------------" << endl;
+}
+
+//=================================VECTORS OF VECTORS===================================
+
+
+void print_vector_of_vectors_of_strings(const string& message, const vector<vector<string> >& vector_of_vectors_of_strings){
+	cout << "-----------------------------------------------------------------" << endl;
+	cout << message << endl;
+
+	//find maximum length row (maximum number of colunms)
+	unsigned int maximum_length_row = 0;
+	for(unsigned int r = 0; r < vector_of_vectors_of_strings.size(); r++){
+		if(vector_of_vectors_of_strings[r].size() > maximum_length_row){
+			maximum_length_row = vector_of_vectors_of_strings[r].size();
+		}
+	}
+
+	//find the largest string in each column to use as the column width for that column
+	vector<unsigned int> maximum_length_per_col(maximum_length_row, 0);
+	for(unsigned int r = 0; r < vector_of_vectors_of_strings.size(); r++){
+		for(unsigned int c = 0; c < vector_of_vectors_of_strings[r].size(); c++){
+			if(vector_of_vectors_of_strings[r][c].size() > maximum_length_per_col[c]){
+				maximum_length_per_col[c] = vector_of_vectors_of_strings[r][c].size();
+			}
+		}
+	}
+
+	//print things according to column widths (left alligned and 1 extra spaces for padding between colums)
+	//TODO: change from right aligned to left aligned.  Try std::left, but if not, 2 prints where padding is (length you want - length you have) before regular print
+	//TODO: also, change the way you are printing to not put an etxra space even at the edges (like before with the "last one" that you did in list/set/1D vector)
+	for(unsigned int r = 0; r < vector_of_vectors_of_strings.size(); r++){
+		for(unsigned int c = 0; c < vector_of_vectors_of_strings[r].size(); c++){
+			std::cout << std::setfill (' ') << std::setw (maximum_length_per_col[c] + 1);
+  			std::cout << vector_of_vectors_of_strings[r][c] << std::endl;
+		}
+	}
+
 	cout << "-----------------------------------------------------------------" << endl;
 }
