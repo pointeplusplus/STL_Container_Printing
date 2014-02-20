@@ -29,12 +29,14 @@
 //One Dimension
 
 void print_vector_of_ints(const std::string& message, const std::vector<int>& vector_of_ints);
+void print_vector_of_unsigned_ints(const std::string& message, const std::vector<unsigned int>& vector_of_unsigned_ints);
 void print_vector_of_chars(const std::string& message, const std::vector<char>& vector_of_chars);
 void print_vector_of_strings(const std::string& message, const std::vector<std::string>& vector_of_strings);
 void print_vector_of_floats(const std::string& message, const std::vector<float>& vector_of_floats);
 void print_vector_of_doubles(const std::string& message, const std::vector<double>& vector_of_doubles);
 
 void print_list_of_ints(const std::string& message, const std::list<int>& list_of_ints);
+void print_list_of_unsigned_ints(const std::string& message, const std::list<unsigned int>& list_of_unsigned_ints);
 void print_list_of_chars(const std::string& message, const std::list<char>& list_of_chars);
 void print_list_of_strings(const std::string& message, const std::list<std::string>& list_of_strings);
 void print_list_of_floats(const std::string& message, const std::list<float>& list_of_floats);
@@ -158,6 +160,14 @@ void print_vector_of_ints(const std::string& message, const std::vector<int>& ve
 	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
+void print_vector_of_unsigned_ints(const std::string& message, const std::vector<unsigned int>& vector_of_unsigned_ints){
+	std::vector<int> vector_of_ints;
+	for(int v = 0; v < vector_of_unsigned_ints.size(); v++){
+		vector_of_ints.push_back((int)vector_of_unsigned_ints[v]);
+	}
+	print_vector_of_ints(message, vector_of_ints);
+}
+
 void print_vector_of_chars(const std::string& message, const std::vector<char>& vector_of_chars){
 	std::cout << TEST_CASE_SEPARATOR << std::endl;
 	std::cout << message << std::endl << "[";
@@ -210,6 +220,14 @@ void print_list_of_ints(const std::string& message, const std::list<int>& list_o
 	}
 	std::cout << *last_item_itr << "]" << std::endl;
 	std::cout << TEST_CASE_SEPARATOR << std::endl;
+}
+
+void print_list_of_unsigned_ints(const std::string& message, const std::list<unsigned int>& list_of_unsigned_ints){
+	std::list<int> list_of_ints;
+	for(std::list<unsigned int>::const_iterator l = list_of_unsigned_ints.begin(); l != list_of_unsigned_ints.end(); l++){
+		list_of_ints.push_back((int)(*l));
+	}
+	print_list_of_ints(message, list_of_ints);;
 }
 
 void print_list_of_chars(const std::string& message, const std::list<char>& list_of_chars){
