@@ -23,57 +23,53 @@
 //#include <unordered_map>
 
 //using namespace std;
-using std::cout;
-using std::list;
-using std::set;
-using std::endl;
-//using std::string;
-using std::vector;
+
+#define TEST_CASE_SEPARATOR "======================================================================================="
 
 //One Dimension
 
-void print_vector_of_ints(const std::string& message, const vector<int>& vector_of_ints);
-void print_vector_of_chars(const std::string& message, const vector<char>& vector_of_chars);
-void print_vector_of_strings(const std::string& message, const vector<std::string>& vector_of_strings);
-void print_vector_of_floats(const std::string& message, const vector<float>& vector_of_floats);
-void print_vector_of_doubles(const std::string& message, const vector<double>& vector_of_doubles);
+void print_vector_of_ints(const std::string& message, const std::vector<int>& vector_of_ints);
+void print_vector_of_chars(const std::string& message, const std::vector<char>& vector_of_chars);
+void print_vector_of_strings(const std::string& message, const std::vector<std::string>& vector_of_strings);
+void print_vector_of_floats(const std::string& message, const std::vector<float>& vector_of_floats);
+void print_vector_of_doubles(const std::string& message, const std::vector<double>& vector_of_doubles);
 
-void print_list_of_ints(const std::string& message, const list<int>& list_of_ints);
-void print_list_of_chars(const std::string& message, const list<char>& list_of_chars);
-void print_list_of_strings(const std::string& message, const list<std::string>& list_of_strings);
-void print_list_of_floats(const std::string& message, const list<float>& list_of_floats);
-void print_list_of_doubles(const std::string& message, const list<double>& list_of_doubles);
+void print_list_of_ints(const std::string& message, const std::list<int>& list_of_ints);
+void print_list_of_chars(const std::string& message, const std::list<char>& list_of_chars);
+void print_list_of_strings(const std::string& message, const std::list<std::string>& list_of_strings);
+void print_list_of_floats(const std::string& message, const std::list<float>& list_of_floats);
+void print_list_of_doubles(const std::string& message, const std::list<double>& list_of_doubles);
 
-void print_set_of_ints(const std::string& message, const set<int>& set_of_ints);
-void print_set_of_chars(const std::string& message, const set<char>& set_of_chars);
-void print_set_of_strings(const std::string& message, const set<std::string> &set_of_strings);
-void print_set_of_floats(const std::string& message, const set<float>& set_of_floats);
-void print_set_of_doubles(const std::string& message, const set<double>& set_of_doubles);
+void print_set_of_ints(const std::string& message, const std::set<int>& set_of_ints);
+void print_set_of_chars(const std::string& message, const std::set<char>& set_of_chars);
+void print_set_of_strings(const std::string& message, const std::set<std::string> &set_of_strings);
+void print_set_of_floats(const std::string& message, const std::set<float>& set_of_floats);
+void print_set_of_doubles(const std::string& message, const std::set<double>& set_of_doubles);
 
 //Two Dimensions
 
-void print_vector_of_vectors_of_strings(const std::string& message, const vector<vector<std::string> >& vector_of_vectors_of_strings);
-void print_vector_of_vectors_of_ints(const std::string& message, const vector<vector<int> >& vector_of_vectors_of_ints);
+void print_vector_of_vectors_of_strings(const std::string& message, const std::vector<std::vector<std::string> >& vector_of_vectors_of_strings);
+void print_vector_of_vectors_of_ints(const std::string& message, const std::vector<std::vector<int> >& vector_of_vectors_of_ints);
 
 int main(int argc, char* argv[]){
 
-	vector<int> vector_of_ints;
-	vector<char> vector_of_chars;
-	vector<std::string> vector_of_strings;
-	vector<float> vector_of_floats;
-	vector<double> vector_of_doubles;
+	std::vector<int> vector_of_ints;
+	std::vector<char> vector_of_chars;
+	std::vector<std::string> vector_of_strings;
+	std::vector<float> vector_of_floats;
+	std::vector<double> vector_of_doubles;
 
-	list<int> list_of_ints;
-	list<char> list_of_chars;
-	list<std::string> list_of_strings;
-	list<float> list_of_floats;
-	list<double> list_of_doubles;
+	std::list<int> list_of_ints;
+	std::list<char> list_of_chars;
+	std::list<std::string> list_of_strings;
+	std::list<float> list_of_floats;
+	std::list<double> list_of_doubles;
 
-	set<int> set_of_ints;
-	set<char> set_of_chars;
-	set<std::string> set_of_strings;
-	set<float> set_of_floats;
-	set<double> set_of_doubles;
+	std::set<int> set_of_ints;
+	std::set<char> set_of_chars;
+	std::set<std::string> set_of_strings;
+	std::set<float> set_of_floats;
+	std::set<double> set_of_doubles;
 	
 
 	
@@ -119,11 +115,11 @@ int main(int argc, char* argv[]){
 	list_of_doubles.push_back(41.0);
 	print_list_of_doubles("testing function", list_of_doubles);
 
-	vector<vector<std::string> > vector_of_vectors_of_strings;
-	vector<std::string> vec1 = {"cat", "dog", "puppy", "buscuit"};
-	vector<std::string> vec2 = {"one", "two", "three", "four", "five", "six"};
-	vector<std::string> vec3 = {"oh", "hai", "thar"};
-	vector<std::string> vec4 = {"do", "you", "want", "to", "build", "a", "snowman?"};
+	std::vector<std::vector<std::string> > vector_of_vectors_of_strings;
+	std::vector<std::string> vec1 = {"cat", "dog", "puppy", "buscuit"};
+	std::vector<std::string> vec2 = {"one", "two", "three", "four", "five", "six"};
+	std::vector<std::string> vec3 = {"oh", "hai", "thar"};
+	std::vector<std::string> vec4 = {"do", "you", "want", "to", "build", "a", "snowman?"};
 	vector_of_vectors_of_strings.push_back(vec1);
 	vector_of_vectors_of_strings.push_back(vec2);
 	vector_of_vectors_of_strings.push_back(vec3);
@@ -131,11 +127,11 @@ int main(int argc, char* argv[]){
 
 	print_vector_of_vectors_of_strings("testing vector of vector of strings", vector_of_vectors_of_strings);
 
-	vector<vector<int> > vector_of_vectors_of_ints;
-	vector<int> vec10 = { 1234, 45, -2334146, 2};
-	vector<int> vec20 = { 1, 2, 3, 4, 5, 6};
-	vector<int> vec30 = { 1234567890, 1234, 4};
-	vector<int> vec40 = { 12, 34, 56, 78, 90, 108, 1856};
+	std::vector<std::vector<int> > vector_of_vectors_of_ints;
+	std::vector<int> vec10 = { 1234, 45, -2334146, 2};
+	std::vector<int> vec20 = { 1, 2, 3, 4, 5, 6};
+	std::vector<int> vec30 = { 1234567890, 1234, 4};
+	std::vector<int> vec40 = { 12, 34, 56, 78, 90, 108, 1856};
 	vector_of_vectors_of_ints.push_back(vec10);
 	vector_of_vectors_of_ints.push_back(vec20);
 	vector_of_vectors_of_ints.push_back(vec30);
@@ -152,187 +148,187 @@ int main(int argc, char* argv[]){
 
 //=================================VECTORS===============================================
 
-void print_vector_of_ints(const std::string& message, const vector<int>& vector_of_ints){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
+void print_vector_of_ints(const std::string& message, const std::vector<int>& vector_of_ints){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
 	for(unsigned int v = 0; v < vector_of_ints.size() -1; v++){
-		cout << vector_of_ints[v] << ", ";
+		std::cout << vector_of_ints[v] << ", ";
 	}
-	cout << vector_of_ints[vector_of_ints.size()-1] << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << vector_of_ints[vector_of_ints.size()-1] << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
-void print_vector_of_chars(const std::string& message, const vector<char>& vector_of_chars){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
+void print_vector_of_chars(const std::string& message, const std::vector<char>& vector_of_chars){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
 	for(unsigned int v = 0; v < vector_of_chars.size() -1; v++){
-		cout << vector_of_chars[v] << ", ";
+		std::cout << vector_of_chars[v] << ", ";
 	}
-	cout << vector_of_chars[vector_of_chars.size()-1] << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << vector_of_chars[vector_of_chars.size()-1] << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }	
 
-void print_vector_of_strings(const std::string& message, const vector<std::string>& vector_of_strings){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
+void print_vector_of_strings(const std::string& message, const std::vector<std::string>& vector_of_strings){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
 	for(unsigned int v = 0; v < vector_of_strings.size() -1; v++){
-		cout << vector_of_strings[v] << ", ";
+		std::cout << vector_of_strings[v] << ", ";
 	}
-	cout << vector_of_strings[vector_of_strings.size()-1] << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << vector_of_strings[vector_of_strings.size()-1] << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
-void print_vector_of_floats(const std::string& message, const vector<float>& vector_of_floats){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
+void print_vector_of_floats(const std::string& message, const std::vector<float>& vector_of_floats){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
 	for(unsigned int v = 0; v < vector_of_floats.size() -1; v++){
-		cout << vector_of_floats[v] << ", ";
+		std::cout << vector_of_floats[v] << ", ";
 	}
-	cout << vector_of_floats[vector_of_floats.size()-1] << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << vector_of_floats[vector_of_floats.size()-1] << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
-void print_vector_of_doubles(const std::string& message, const vector<double>& vector_of_doubles){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
+void print_vector_of_doubles(const std::string& message, const std::vector<double>& vector_of_doubles){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
 	for(unsigned int v = 0; v < vector_of_doubles.size() -1; v++){
-		cout << vector_of_doubles[v] << ", ";
+		std::cout << vector_of_doubles[v] << ", ";
 	}
-	cout << vector_of_doubles[vector_of_doubles.size()-1] << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << vector_of_doubles[vector_of_doubles.size()-1] << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
 //=================================LISTS================================================
 
-void print_list_of_ints(const std::string& message, const list<int>& list_of_ints){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
-	list<int>::const_iterator last_item_itr = list_of_ints.end();
+void print_list_of_ints(const std::string& message, const std::list<int>& list_of_ints){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
+	std::list<int>::const_iterator last_item_itr = list_of_ints.end();
 	last_item_itr--;
-	for(list<int>::const_iterator l = list_of_ints.begin(); l != last_item_itr; l++){
-		cout << *l << ", ";
+	for(std::list<int>::const_iterator l = list_of_ints.begin(); l != last_item_itr; l++){
+		std::cout << *l << ", ";
 	}
-	cout << *last_item_itr << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << *last_item_itr << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
-void print_list_of_chars(const std::string& message, const list<char>& list_of_chars){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
-	list<char>::const_iterator last_item_itr = list_of_chars.end();
+void print_list_of_chars(const std::string& message, const std::list<char>& list_of_chars){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
+	std::list<char>::const_iterator last_item_itr = list_of_chars.end();
 	last_item_itr--;
-	for(list<char>::const_iterator l = list_of_chars.begin(); l != last_item_itr; l++){
-		cout << *l << ", ";
+	for(std::list<char>::const_iterator l = list_of_chars.begin(); l != last_item_itr; l++){
+		std::cout << *l << ", ";
 	}
-	cout << *last_item_itr << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << *last_item_itr << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
-void print_list_of_strings(const std::string& message, const list<std::string>& list_of_strings){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
-	list<std::string>::const_iterator last_item_itr = list_of_strings.end();
+void print_list_of_strings(const std::string& message, const std::list<std::string>& list_of_strings){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
+	std::list<std::string>::const_iterator last_item_itr = list_of_strings.end();
 	last_item_itr--;
-	for(list<std::string>::const_iterator l = list_of_strings.begin(); l != last_item_itr; l++){
-		cout << *l << ", ";
+	for(std::list<std::string>::const_iterator l = list_of_strings.begin(); l != last_item_itr; l++){
+		std::cout << *l << ", ";
 	}
-	cout << *last_item_itr << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << *last_item_itr << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
-void print_list_of_floats(const std::string& message, const list<float>& list_of_floats){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
-	list<float>::const_iterator last_item_itr = list_of_floats.end();
+void print_list_of_floats(const std::string& message, const std::list<float>& list_of_floats){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
+	std::list<float>::const_iterator last_item_itr = list_of_floats.end();
 	last_item_itr--;
-	for(list<float>::const_iterator l = list_of_floats.begin(); l != last_item_itr; l++){
-		cout << *l << ", ";
+	for(std::list<float>::const_iterator l = list_of_floats.begin(); l != last_item_itr; l++){
+		std::cout << *l << ", ";
 	}
-	cout << *last_item_itr << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << *last_item_itr << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
-void print_list_of_doubles(const std::string& message, const list<double>& list_of_doubles){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
-	list<double>::const_iterator last_item_itr = list_of_doubles.end();
+void print_list_of_doubles(const std::string& message, const std::list<double>& list_of_doubles){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
+	std::list<double>::const_iterator last_item_itr = list_of_doubles.end();
 	last_item_itr--;
-	for(list<double>::const_iterator l = list_of_doubles.begin(); l != last_item_itr; l++){
-		cout << *l << ", ";
+	for(std::list<double>::const_iterator l = list_of_doubles.begin(); l != last_item_itr; l++){
+		std::cout << *l << ", ";
 	}
-	cout << *last_item_itr << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << *last_item_itr << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
 //==================================SETS================================================
 
-void print_set_of_ints(const std::string& message, const set<int>& set_of_ints){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
-	set<int>::const_iterator last_item_itr = set_of_ints.end();
+void print_set_of_ints(const std::string& message, const std::set<int>& set_of_ints){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
+	std::set<int>::const_iterator last_item_itr = set_of_ints.end();
 	last_item_itr--;
-	for(set<int>::const_iterator l = set_of_ints.begin(); l != last_item_itr; l++){
-		cout << *l << ", ";
+	for(std::set<int>::const_iterator l = set_of_ints.begin(); l != last_item_itr; l++){
+		std::cout << *l << ", ";
 	}
-	cout << *last_item_itr << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << *last_item_itr << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
-void print_set_of_chars(const std::string& message, const set<char>& set_of_chars){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
-	set<char>::const_iterator last_item_itr = set_of_chars.end();
+void print_set_of_chars(const std::string& message, const std::set<char>& set_of_chars){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
+	std::set<char>::const_iterator last_item_itr = set_of_chars.end();
 	last_item_itr--;
-	for(set<char>::const_iterator l = set_of_chars.begin(); l != last_item_itr; l++){
-		cout << *l << ", ";
+	for(std::set<char>::const_iterator l = set_of_chars.begin(); l != last_item_itr; l++){
+		std::cout << *l << ", ";
 	}
-	cout << *last_item_itr << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << *last_item_itr << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
-void print_set_of_strings(const std::string& message, const set<std::string>& set_of_strings){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
-	set<std::string>::const_iterator last_item_itr = set_of_strings.end();
+void print_set_of_strings(const std::string& message, const std::set<std::string>& set_of_strings){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
+	std::set<std::string>::const_iterator last_item_itr = set_of_strings.end();
 	last_item_itr--;
-	for(set<std::string>::const_iterator l = set_of_strings.begin(); l != last_item_itr; l++){
-		cout << *l << ", ";
+	for(std::set<std::string>::const_iterator l = set_of_strings.begin(); l != last_item_itr; l++){
+		std::cout << *l << ", ";
 	}
-	cout << *last_item_itr << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << *last_item_itr << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
-void print_set_of_floats(const std::string& message, const set<float>& set_of_floats){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
-	set<float>::const_iterator last_item_itr = set_of_floats.end();
+void print_set_of_floats(const std::string& message, const std::set<float>& set_of_floats){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
+	std::set<float>::const_iterator last_item_itr = set_of_floats.end();
 	last_item_itr--;
-	for(set<float>::const_iterator l = set_of_floats.begin(); l != last_item_itr; l++){
-		cout << *l << ", ";
+	for(std::set<float>::const_iterator l = set_of_floats.begin(); l != last_item_itr; l++){
+		std::cout << *l << ", ";
 	}
-	cout << *last_item_itr << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << *last_item_itr << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
-void print_set_of_doubles(const std::string& message, const set<double>& set_of_doubles){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl << "[";
-	set<double>::const_iterator last_item_itr = set_of_doubles.end();
+void print_set_of_doubles(const std::string& message, const std::set<double>& set_of_doubles){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl << "[";
+	std::set<double>::const_iterator last_item_itr = set_of_doubles.end();
 	last_item_itr--;
-	for(set<double>::const_iterator l = set_of_doubles.begin(); l != last_item_itr; l++){
-		cout << *l << ", ";
+	for(std::set<double>::const_iterator l = set_of_doubles.begin(); l != last_item_itr; l++){
+		std::cout << *l << ", ";
 	}
-	cout << *last_item_itr << "]" << endl;
-	cout << "=======================================================================================" << endl;
+	std::cout << *last_item_itr << "]" << std::endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
 
 //=================================VECTORS OF VECTORS===================================
 
 
-void print_vector_of_vectors_of_strings(const std::string& message, const vector<vector<std::string> >& vector_of_vectors_of_strings){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl;
+void print_vector_of_vectors_of_strings(const std::string& message, const std::vector<std::vector<std::string> >& vector_of_vectors_of_strings){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl;
 
 	//find maximum length row (maximum number of colunms)
 	unsigned int maximum_length_row = 0;
@@ -345,7 +341,7 @@ void print_vector_of_vectors_of_strings(const std::string& message, const vector
 
 
 	//find the largest string in each column to use as the column width for that column
-	vector<unsigned int> maximum_length_per_col(maximum_length_row, 0);
+	std::vector<unsigned int> maximum_length_per_col(maximum_length_row, 0);
 	for(unsigned int r = 0; r < vector_of_vectors_of_strings.size(); r++){
 		for(unsigned int c = 0; c < vector_of_vectors_of_strings[r].size(); c++){
 			if(vector_of_vectors_of_strings[r][c].size() > maximum_length_per_col[c]){
@@ -355,7 +351,7 @@ void print_vector_of_vectors_of_strings(const std::string& message, const vector
 	}
 
 	//determine the length of a table at each column width (for printing the line between)
-	vector<unsigned int> table_width_at_column(maximum_length_row, 0);
+	std::vector<unsigned int> table_width_at_column(maximum_length_row, 0);
 	table_width_at_column[0] = 4 + maximum_length_per_col[0]; //this is the width of "|  |"
 	for(unsigned int t = 1; t < table_width_at_column.size(); t++){
 		table_width_at_column[t] = table_width_at_column[t-1] + maximum_length_per_col[t] + 3; //3 because ' ' on either side of the word and 1 for '|'
@@ -387,7 +383,7 @@ void print_vector_of_vectors_of_strings(const std::string& message, const vector
 	std::string line(table_width_at_column[vector_of_vectors_of_strings[vector_of_vectors_of_strings.size()-1].size()-1], '-');
 	std::cout << line << std::endl;
 
-	cout << "=======================================================================================" << endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
 unsigned int number_of_digits(int number){
@@ -400,9 +396,9 @@ unsigned int number_of_digits(int number){
 	return digits;
 }
 
-void print_vector_of_vectors_of_ints(const std::string& message, const vector<vector<int> >& vector_of_vectors_of_ints){
-	cout << "=======================================================================================" << endl;
-	cout << message << endl;
+void print_vector_of_vectors_of_ints(const std::string& message, const std::vector<std::vector<int> >& vector_of_vectors_of_ints){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl;
 
 	//find maximum length row (maximum number of colunms)
 	unsigned int maximum_length_row = 0;
@@ -415,7 +411,7 @@ void print_vector_of_vectors_of_ints(const std::string& message, const vector<ve
 
 
 	//find the largest string in each column to use as the column width for that column
-	vector<unsigned int> maximum_length_per_col(maximum_length_row, 0);
+	std::vector<unsigned int> maximum_length_per_col(maximum_length_row, 0);
 	for(unsigned int r = 0; r < vector_of_vectors_of_ints.size(); r++){
 		for(unsigned int c = 0; c < vector_of_vectors_of_ints[r].size(); c++){
 			if(number_of_digits(vector_of_vectors_of_ints[r][c]) > maximum_length_per_col[c]){
@@ -425,7 +421,7 @@ void print_vector_of_vectors_of_ints(const std::string& message, const vector<ve
 	}
 
 	//determine the length of a table at each column width (for printing the line between)
-	vector<unsigned int> table_width_at_column(maximum_length_row, 0);
+	std::vector<unsigned int> table_width_at_column(maximum_length_row, 0);
 	table_width_at_column[0] = 4 + maximum_length_per_col[0]; //this is the width of "|  |"
 	for(unsigned int t = 1; t < table_width_at_column.size(); t++){
 		table_width_at_column[t] = table_width_at_column[t-1] + maximum_length_per_col[t] + 3; //3 because ' ' on either side of the word and 1 for '|'
@@ -457,5 +453,5 @@ void print_vector_of_vectors_of_ints(const std::string& message, const vector<ve
 	std::string line(table_width_at_column[vector_of_vectors_of_ints[vector_of_vectors_of_ints.size()-1].size()-1], '-');
 	std::cout << line << std::endl;
 
-	cout << "=======================================================================================" << endl;
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
