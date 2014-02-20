@@ -22,50 +22,56 @@
 #include <set>
 //#include <unordered_map>
 
-using namespace std;
+//using namespace std;
+using std::cout;
+using std::list;
+using std::set;
+using std::endl;
+//using std::string;
+using std::vector;
 
 //One Dimension
 
-void print_vector_of_ints(const string& message, const vector<int>& vector_of_ints);
-void print_vector_of_chars(const string& message, const vector<char>& vector_of_chars);
-void print_vector_of_strings(const string& message, const vector<string>& vector_of_strings);
-void print_vector_of_floats(const string& message, const vector<float>& vector_of_floats);
-void print_vector_of_doubles(const string& message, const vector<double>& vector_of_doubles);
+void print_vector_of_ints(const std::string& message, const vector<int>& vector_of_ints);
+void print_vector_of_chars(const std::string& message, const vector<char>& vector_of_chars);
+void print_vector_of_strings(const std::string& message, const vector<std::string>& vector_of_strings);
+void print_vector_of_floats(const std::string& message, const vector<float>& vector_of_floats);
+void print_vector_of_doubles(const std::string& message, const vector<double>& vector_of_doubles);
 
-void print_list_of_ints(const string& message, const list<int>& list_of_ints);
-void print_list_of_chars(const string& message, const list<char>& list_of_chars);
-void print_list_of_strings(const string& message, const list<string>& list_of_strings);
-void print_list_of_floats(const string& message, const list<float>& list_of_floats);
-void print_list_of_doubles(const string& message, const list<double>& list_of_doubles);
+void print_list_of_ints(const std::string& message, const list<int>& list_of_ints);
+void print_list_of_chars(const std::string& message, const list<char>& list_of_chars);
+void print_list_of_strings(const std::string& message, const list<std::string>& list_of_strings);
+void print_list_of_floats(const std::string& message, const list<float>& list_of_floats);
+void print_list_of_doubles(const std::string& message, const list<double>& list_of_doubles);
 
-void print_set_of_ints(const string& message, const set<int>& set_of_ints);
-void print_set_of_chars(const string& message, const set<char>& set_of_chars);
-void print_set_of_strings(const string& message, const set<string> &set_of_strings);
-void print_set_of_floats(const string& message, const set<float>& set_of_floats);
-void print_set_of_doubles(const string& message, const set<double>& set_of_doubles);
+void print_set_of_ints(const std::string& message, const set<int>& set_of_ints);
+void print_set_of_chars(const std::string& message, const set<char>& set_of_chars);
+void print_set_of_strings(const std::string& message, const set<std::string> &set_of_strings);
+void print_set_of_floats(const std::string& message, const set<float>& set_of_floats);
+void print_set_of_doubles(const std::string& message, const set<double>& set_of_doubles);
 
 //Two Dimensions
 
-void print_vector_of_vectors_of_strings(const string& message, const vector<vector<string> >& vector_of_vectors_of_strings);
-void print_vector_of_vectors_of_ints(const string& message, const vector<vector<int> >& vector_of_vectors_of_ints);
+void print_vector_of_vectors_of_strings(const std::string& message, const vector<vector<std::string> >& vector_of_vectors_of_strings);
+void print_vector_of_vectors_of_ints(const std::string& message, const vector<vector<int> >& vector_of_vectors_of_ints);
 
 int main(int argc, char* argv[]){
 
 	vector<int> vector_of_ints;
 	vector<char> vector_of_chars;
-	vector<string> vector_of_strings;
+	vector<std::string> vector_of_strings;
 	vector<float> vector_of_floats;
 	vector<double> vector_of_doubles;
 
 	list<int> list_of_ints;
 	list<char> list_of_chars;
-	list<string> list_of_strings;
+	list<std::string> list_of_strings;
 	list<float> list_of_floats;
 	list<double> list_of_doubles;
 
 	set<int> set_of_ints;
 	set<char> set_of_chars;
-	set<string> set_of_strings;
+	set<std::string> set_of_strings;
 	set<float> set_of_floats;
 	set<double> set_of_doubles;
 	
@@ -113,11 +119,11 @@ int main(int argc, char* argv[]){
 	list_of_doubles.push_back(41.0);
 	print_list_of_doubles("testing function", list_of_doubles);
 
-	vector<vector<string> > vector_of_vectors_of_strings;
-	vector<string> vec1 = {"cat", "dog", "puppy", "buscuit"};
-	vector<string> vec2 = {"one", "two", "three", "four", "five", "six"};
-	vector<string> vec3 = {"oh", "hai", "thar"};
-	vector<string> vec4 = {"do", "you", "want", "to", "build", "a", "snowman?"};
+	vector<vector<std::string> > vector_of_vectors_of_strings;
+	vector<std::string> vec1 = {"cat", "dog", "puppy", "buscuit"};
+	vector<std::string> vec2 = {"one", "two", "three", "four", "five", "six"};
+	vector<std::string> vec3 = {"oh", "hai", "thar"};
+	vector<std::string> vec4 = {"do", "you", "want", "to", "build", "a", "snowman?"};
 	vector_of_vectors_of_strings.push_back(vec1);
 	vector_of_vectors_of_strings.push_back(vec2);
 	vector_of_vectors_of_strings.push_back(vec3);
@@ -126,7 +132,7 @@ int main(int argc, char* argv[]){
 	print_vector_of_vectors_of_strings("testing vector of vector of strings", vector_of_vectors_of_strings);
 
 	vector<vector<int> > vector_of_vectors_of_ints;
-	vector<int> vec10 = { 1234, 45, 2334146, 2};
+	vector<int> vec10 = { 1234, 45, -2334146, 2};
 	vector<int> vec20 = { 1, 2, 3, 4, 5, 6};
 	vector<int> vec30 = { 1234567890, 1234, 4};
 	vector<int> vec40 = { 12, 34, 56, 78, 90, 108, 1856};
@@ -146,7 +152,7 @@ int main(int argc, char* argv[]){
 
 //=================================VECTORS===============================================
 
-void print_vector_of_ints(const string& message, const vector<int>& vector_of_ints){
+void print_vector_of_ints(const std::string& message, const vector<int>& vector_of_ints){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_ints.size() -1; v++){
@@ -156,7 +162,7 @@ void print_vector_of_ints(const string& message, const vector<int>& vector_of_in
 	cout << "=======================================================================================" << endl;
 }
 
-void print_vector_of_chars(const string& message, const vector<char>& vector_of_chars){
+void print_vector_of_chars(const std::string& message, const vector<char>& vector_of_chars){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_chars.size() -1; v++){
@@ -166,7 +172,7 @@ void print_vector_of_chars(const string& message, const vector<char>& vector_of_
 	cout << "=======================================================================================" << endl;
 }	
 
-void print_vector_of_strings(const string& message, const vector<string>& vector_of_strings){
+void print_vector_of_strings(const std::string& message, const vector<std::string>& vector_of_strings){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_strings.size() -1; v++){
@@ -176,7 +182,7 @@ void print_vector_of_strings(const string& message, const vector<string>& vector
 	cout << "=======================================================================================" << endl;
 }
 
-void print_vector_of_floats(const string& message, const vector<float>& vector_of_floats){
+void print_vector_of_floats(const std::string& message, const vector<float>& vector_of_floats){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_floats.size() -1; v++){
@@ -186,7 +192,7 @@ void print_vector_of_floats(const string& message, const vector<float>& vector_o
 	cout << "=======================================================================================" << endl;
 }
 
-void print_vector_of_doubles(const string& message, const vector<double>& vector_of_doubles){
+void print_vector_of_doubles(const std::string& message, const vector<double>& vector_of_doubles){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl << "[";
 	for(unsigned int v = 0; v < vector_of_doubles.size() -1; v++){
@@ -198,7 +204,7 @@ void print_vector_of_doubles(const string& message, const vector<double>& vector
 
 //=================================LISTS================================================
 
-void print_list_of_ints(const string& message, const list<int>& list_of_ints){
+void print_list_of_ints(const std::string& message, const list<int>& list_of_ints){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl << "[";
 	list<int>::const_iterator last_item_itr = list_of_ints.end();
@@ -210,7 +216,7 @@ void print_list_of_ints(const string& message, const list<int>& list_of_ints){
 	cout << "=======================================================================================" << endl;
 }
 
-void print_list_of_chars(const string& message, const list<char>& list_of_chars){
+void print_list_of_chars(const std::string& message, const list<char>& list_of_chars){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl << "[";
 	list<char>::const_iterator last_item_itr = list_of_chars.end();
@@ -222,19 +228,19 @@ void print_list_of_chars(const string& message, const list<char>& list_of_chars)
 	cout << "=======================================================================================" << endl;
 }
 
-void print_list_of_strings(const string& message, const list<string>& list_of_strings){
+void print_list_of_strings(const std::string& message, const list<std::string>& list_of_strings){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl << "[";
-	list<string>::const_iterator last_item_itr = list_of_strings.end();
+	list<std::string>::const_iterator last_item_itr = list_of_strings.end();
 	last_item_itr--;
-	for(list<string>::const_iterator l = list_of_strings.begin(); l != last_item_itr; l++){
+	for(list<std::string>::const_iterator l = list_of_strings.begin(); l != last_item_itr; l++){
 		cout << *l << ", ";
 	}
 	cout << *last_item_itr << "]" << endl;
 	cout << "=======================================================================================" << endl;
 }
 
-void print_list_of_floats(const string& message, const list<float>& list_of_floats){
+void print_list_of_floats(const std::string& message, const list<float>& list_of_floats){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl << "[";
 	list<float>::const_iterator last_item_itr = list_of_floats.end();
@@ -246,7 +252,7 @@ void print_list_of_floats(const string& message, const list<float>& list_of_floa
 	cout << "=======================================================================================" << endl;
 }
 
-void print_list_of_doubles(const string& message, const list<double>& list_of_doubles){
+void print_list_of_doubles(const std::string& message, const list<double>& list_of_doubles){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl << "[";
 	list<double>::const_iterator last_item_itr = list_of_doubles.end();
@@ -260,7 +266,7 @@ void print_list_of_doubles(const string& message, const list<double>& list_of_do
 
 //==================================SETS================================================
 
-void print_set_of_ints(const string& message, const set<int>& set_of_ints){
+void print_set_of_ints(const std::string& message, const set<int>& set_of_ints){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl << "[";
 	set<int>::const_iterator last_item_itr = set_of_ints.end();
@@ -272,7 +278,7 @@ void print_set_of_ints(const string& message, const set<int>& set_of_ints){
 	cout << "=======================================================================================" << endl;
 }
 
-void print_set_of_chars(const string& message, const set<char>& set_of_chars){
+void print_set_of_chars(const std::string& message, const set<char>& set_of_chars){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl << "[";
 	set<char>::const_iterator last_item_itr = set_of_chars.end();
@@ -284,22 +290,47 @@ void print_set_of_chars(const string& message, const set<char>& set_of_chars){
 	cout << "=======================================================================================" << endl;
 }
 
-void print_set_of_strings(const string& message, const set<string>& set_of_strings){
+void print_set_of_strings(const std::string& message, const set<std::string>& set_of_strings){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl << "[";
-	set<string>::const_iterator last_item_itr = set_of_strings.end();
+	set<std::string>::const_iterator last_item_itr = set_of_strings.end();
 	last_item_itr--;
-	for(set<string>::const_iterator l = set_of_strings.begin(); l != last_item_itr; l++){
+	for(set<std::string>::const_iterator l = set_of_strings.begin(); l != last_item_itr; l++){
 		cout << *l << ", ";
 	}
 	cout << *last_item_itr << "]" << endl;
 	cout << "=======================================================================================" << endl;
 }
 
+void print_set_of_floats(const std::string& message, const set<float>& set_of_floats){
+	cout << "=======================================================================================" << endl;
+	cout << message << endl << "[";
+	set<float>::const_iterator last_item_itr = set_of_floats.end();
+	last_item_itr--;
+	for(set<float>::const_iterator l = set_of_floats.begin(); l != last_item_itr; l++){
+		cout << *l << ", ";
+	}
+	cout << *last_item_itr << "]" << endl;
+	cout << "=======================================================================================" << endl;
+}
+
+void print_set_of_doubles(const std::string& message, const set<double>& set_of_doubles){
+	cout << "=======================================================================================" << endl;
+	cout << message << endl << "[";
+	set<double>::const_iterator last_item_itr = set_of_doubles.end();
+	last_item_itr--;
+	for(set<double>::const_iterator l = set_of_doubles.begin(); l != last_item_itr; l++){
+		cout << *l << ", ";
+	}
+	cout << *last_item_itr << "]" << endl;
+	cout << "=======================================================================================" << endl;
+}
+
+
 //=================================VECTORS OF VECTORS===================================
 
 
-void print_vector_of_vectors_of_strings(const string& message, const vector<vector<string> >& vector_of_vectors_of_strings){
+void print_vector_of_vectors_of_strings(const std::string& message, const vector<vector<std::string> >& vector_of_vectors_of_strings){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl;
 
@@ -334,11 +365,11 @@ void print_vector_of_vectors_of_strings(const string& message, const vector<vect
 	for(unsigned int r = 0; r < vector_of_vectors_of_strings.size(); r++){
 		//print the line between rows
 		if(r != 0 && vector_of_vectors_of_strings[r-1].size() > vector_of_vectors_of_strings[r].size() ){
-			string line(table_width_at_column[vector_of_vectors_of_strings[r-1].size()-1], '-');
+			std::string line(table_width_at_column[vector_of_vectors_of_strings[r-1].size()-1], '-');
 			std::cout << line << std::endl;
 		}
 		else{
-			string line(table_width_at_column[vector_of_vectors_of_strings[r].size()-1], '-');
+			std::string line(table_width_at_column[vector_of_vectors_of_strings[r].size()-1], '-');
 			std::cout << line << std::endl;
 		}
 		
@@ -353,13 +384,13 @@ void print_vector_of_vectors_of_strings(const string& message, const vector<vect
 		std::cout << " |" << std::endl;
 
 	}
-	string line(table_width_at_column[vector_of_vectors_of_strings[vector_of_vectors_of_strings.size()-1].size()-1], '-');
+	std::string line(table_width_at_column[vector_of_vectors_of_strings[vector_of_vectors_of_strings.size()-1].size()-1], '-');
 	std::cout << line << std::endl;
 
 	cout << "=======================================================================================" << endl;
 }
 
-int number_of_digits(int number){
+unsigned int number_of_digits(int number){
 	int digits = 0;
 	if(number < 0) digits++; // for the '-' sign
 	while(number != 0){
@@ -369,7 +400,7 @@ int number_of_digits(int number){
 	return digits;
 }
 
-void print_vector_of_vectors_of_ints(const string& message, const vector<vector<int> >& vector_of_vectors_of_ints){
+void print_vector_of_vectors_of_ints(const std::string& message, const vector<vector<int> >& vector_of_vectors_of_ints){
 	cout << "=======================================================================================" << endl;
 	cout << message << endl;
 
@@ -404,11 +435,11 @@ void print_vector_of_vectors_of_ints(const string& message, const vector<vector<
 	for(unsigned int r = 0; r < vector_of_vectors_of_ints.size(); r++){
 		//print the line between rows
 		if(r != 0 && vector_of_vectors_of_ints[r-1].size() > vector_of_vectors_of_ints[r].size() ){
-			string line(table_width_at_column[vector_of_vectors_of_ints[r-1].size()-1], '-');
+			std::string line(table_width_at_column[vector_of_vectors_of_ints[r-1].size()-1], '-');
 			std::cout << line << std::endl;
 		}
 		else{
-			string line(table_width_at_column[vector_of_vectors_of_ints[r].size()-1], '-');
+			std::string line(table_width_at_column[vector_of_vectors_of_ints[r].size()-1], '-');
 			std::cout << line << std::endl;
 		}
 		
@@ -423,7 +454,7 @@ void print_vector_of_vectors_of_ints(const string& message, const vector<vector<
 		std::cout << " |" << std::endl;
 
 	}
-	string line(table_width_at_column[vector_of_vectors_of_ints[vector_of_vectors_of_ints.size()-1].size()-1], '-');
+	std::string line(table_width_at_column[vector_of_vectors_of_ints[vector_of_vectors_of_ints.size()-1].size()-1], '-');
 	std::cout << line << std::endl;
 
 	cout << "=======================================================================================" << endl;
