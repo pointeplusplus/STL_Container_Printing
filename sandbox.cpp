@@ -112,6 +112,19 @@ int main(int argc, char* argv[]){
 	list_of_doubles.push_back(41.0);
 	print_list_of_doubles("testing function", list_of_doubles);
 
+	vector<vector<string> > vector_of_vectors_of_strings;
+	vector<string> vec1 = {"cat", "dog", "puppy", "buscuit"};
+	vector<string> vec2 = {"one", "two", "three", "four", "five", "six"};
+	vector<string> vec3 = {"oh", "hai", "thar"};
+	vector<string> vec4 = {"do", "you", "want", "to", "build", "a", "snowman?"};
+	vector_of_vectors_of_strings.push_back(vec1);
+	vector_of_vectors_of_strings.push_back(vec2);
+	vector_of_vectors_of_strings.push_back(vec3);
+	vector_of_vectors_of_strings.push_back(vec4);
+
+	print_vector_of_vectors_of_strings("testing vector of vector of strings", vector_of_vectors_of_strings);
+
+
 	//print_vector_of_ints("vector initialized given number and filler", vector_of_ints);
 	
 
@@ -300,9 +313,9 @@ void print_vector_of_vectors_of_strings(const string& message, const vector<vect
 	//TODO: also, change the way you are printing to not put an etxra space even at the edges (like before with the "last one" that you did in list/set/1D vector)
 	for(unsigned int r = 0; r < vector_of_vectors_of_strings.size(); r++){
 		for(unsigned int c = 0; c < vector_of_vectors_of_strings[r].size(); c++){
-			std::cout << std::setfill (' ') << std::setw (maximum_length_per_col[c] + 1);
-  			std::cout << vector_of_vectors_of_strings[r][c] << std::endl;
+			std::cout << std::left << std::setw (maximum_length_per_col[c] + 1) << std::setfill (' ') << vector_of_vectors_of_strings[r][c];
 		}
+		std::cout << std::endl;
 	}
 
 	cout << "-----------------------------------------------------------------" << endl;
