@@ -43,15 +43,20 @@ void print_list_of_floats(const std::string& message, const std::list<float>& li
 void print_list_of_doubles(const std::string& message, const std::list<double>& list_of_doubles);
 
 void print_set_of_ints(const std::string& message, const std::set<int>& set_of_ints);
+void print_set_of_unsigned_ints(const std::string& message, const std::set<unsigned int>& set_of_unsigned_ints);
 void print_set_of_chars(const std::string& message, const std::set<char>& set_of_chars);
 void print_set_of_strings(const std::string& message, const std::set<std::string> &set_of_strings);
 void print_set_of_floats(const std::string& message, const std::set<float>& set_of_floats);
 void print_set_of_doubles(const std::string& message, const std::set<double>& set_of_doubles);
 
-//Two Dimensions
+void print_map_of_ints_and_ints(const std::string& message, const std::map<int, int>& map_of_ints_and_ints);
+void print_map_of_strings_and_ints(const std::string& message, const std::map<std::string, int>& map_of_strings_and_ints);
 
-void print_vector_of_vectors_of_strings(const std::string& message, const std::vector<std::vector<std::string> >& vector_of_vectors_of_strings);
+//Two Dimensions
 void print_vector_of_vectors_of_ints(const std::string& message, const std::vector<std::vector<int> >& vector_of_vectors_of_ints);
+void print_vector_of_vectors_of_unsigned_ints(const std::string& message, const std::vector<std::vector<unsigned int> >& vector_of_vectors_of_unsigned_ints);
+void print_vector_of_vectors_of_strings(const std::string& message, const std::vector<std::vector<std::string> >& vector_of_vectors_of_strings);
+
 
 int main(int argc, char* argv[]){
 
@@ -141,11 +146,39 @@ int main(int argc, char* argv[]){
 
 	print_vector_of_vectors_of_ints("testing vector of vector of ints", vector_of_vectors_of_ints);
 
+	std::map<int, int> map_of_ints_and_ints;
+	map_of_ints_and_ints.insert(std::make_pair(4,5));
+	map_of_ints_and_ints.insert(std::make_pair(343,34546564));
+	map_of_ints_and_ints.insert(std::make_pair(1,3));
+	map_of_ints_and_ints.insert(std::make_pair(343,579));
+
+	print_map_of_ints_and_ints("testing map print for ints and ints", map_of_ints_and_ints);
+
+	std::map<std::string, int> map_of_strings_and_ints;
+	map_of_strings_and_ints.insert(std::make_pair("string",5));
+	map_of_strings_and_ints.insert(std::make_pair("this is a long string",34546564));
+	map_of_strings_and_ints.insert(std::make_pair("moo",3));
+	map_of_strings_and_ints.insert(std::make_pair("om nom nom",579));
+
+	print_map_of_strings_and_ints("testing map print for strings and ints", map_of_strings_and_ints);
 
 	//print_vector_of_ints("vector initialized given number and filler", vector_of_ints);
 	
 
 	return 0;
+}
+
+//=================================HELPERS===============================================
+
+//this finds the nuber of digits in an integer ('-' sign counts as one digit) to know how much space it will take up
+unsigned int number_of_digits(int number){
+	int digits = 0;
+	if(number < 0) digits++; // for the '-' sign
+	while(number != 0){
+		number /= 10;
+		digits++;
+	}
+	return digits;
 }
 
 //=================================VECTORS===============================================
@@ -227,7 +260,7 @@ void print_list_of_unsigned_ints(const std::string& message, const std::list<uns
 	for(std::list<unsigned int>::const_iterator l = list_of_unsigned_ints.begin(); l != list_of_unsigned_ints.end(); l++){
 		list_of_ints.push_back((int)(*l));
 	}
-	print_list_of_ints(message, list_of_ints);;
+	print_list_of_ints(message, list_of_ints);
 }
 
 void print_list_of_chars(const std::string& message, const std::list<char>& list_of_chars){
@@ -292,6 +325,14 @@ void print_set_of_ints(const std::string& message, const std::set<int>& set_of_i
 	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
+void print_set_of_unsigned_ints(const std::string& message, const std::set<unsigned int>& set_of_unsigned_ints){
+	std::set<int> set_of_ints;
+	for(std::set<unsigned int>::const_iterator l = set_of_unsigned_ints.begin(); l != set_of_unsigned_ints.end(); l++){
+		set_of_ints.insert((int)(*l));
+	}
+	print_set_of_ints(message, set_of_ints);
+}
+
 void print_set_of_chars(const std::string& message, const std::set<char>& set_of_chars){
 	std::cout << TEST_CASE_SEPARATOR << std::endl;
 	std::cout << message << std::endl << "[";
@@ -340,9 +381,149 @@ void print_set_of_doubles(const std::string& message, const std::set<double>& se
 	std::cout << TEST_CASE_SEPARATOR << std::endl;
 }
 
+//==================================MAPS================================================
+
+void print_map_of_ints_and_ints(const std::string& message, const std::map<int, int>& map_of_ints_and_ints){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl;
+
+	unsigned int left_column_width = 0;
+	unsigned int right_column_width = 0;
+	unsigned int first_number_of_digits;
+	unsigned int second_number_of_digits;
+
+	//TODO: since maps sort, the one with the largest digits is either the first or last (negative or positive largest)
+	//loop through and find what the column widths need to be (largest)
+	for(std::map<int, int>::const_iterator m = map_of_ints_and_ints.begin(); m != map_of_ints_and_ints.end(); m++){
+		first_number_of_digits = number_of_digits(m->first);
+		second_number_of_digits = number_of_digits(m->second);
+		//TODO: switch to using max
+		if(first_number_of_digits > left_column_width){
+			left_column_width = first_number_of_digits;
+		}
+		if(second_number_of_digits > right_column_width){
+			right_column_width = second_number_of_digits;
+		}
+	}
+	std::string horizontal_line(left_column_width+right_column_width+7, '-'); //3 for '|', 4 for ' '
+	for(std::map<int, int>::const_iterator m = map_of_ints_and_ints.begin(); m != map_of_ints_and_ints.end(); m++){
+		std::cout << horizontal_line << std::endl;
+		std::cout << "| ";
+		std::cout << std::right << std::setw (left_column_width) << std::setfill (' ') << m->first;
+		std::cout << " | ";
+		std::cout << std::right << std::setw (right_column_width) << std::setfill (' ') << m->second;
+		std::cout << " |" << std::endl;
+	}
+	std::cout << horizontal_line << std::endl;
+
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+}
+
+void print_map_of_strings_and_ints(const std::string& message, const std::map<std::string, int>& map_of_strings_and_ints){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl;
+
+	unsigned int left_column_width = 0;
+	unsigned int right_column_width = 0;
+	unsigned int first_max_size;
+	unsigned int second_number_of_digits;
+
+	//TODO: since maps sort, the one with the largest digits is either the first or last (negative or positive largest)
+	//loop through and find what the column widths need to be (largest)
+	for(std::map<std::string, int>::const_iterator m = map_of_strings_and_ints.begin(); m != map_of_strings_and_ints.end(); m++){
+		first_max_size = (m->first).size();
+		second_number_of_digits = number_of_digits(m->second);
+		//TODO: switch to using max
+		if(first_max_size > left_column_width){
+			left_column_width = first_max_size;
+		}
+		if(second_number_of_digits > right_column_width){
+			right_column_width = second_number_of_digits;
+		}
+	}
+	std::string horizontal_line(left_column_width+right_column_width+7, '-'); //3 for '|', 4 for ' '
+	for(std::map<std::string, int>::const_iterator m = map_of_strings_and_ints.begin(); m != map_of_strings_and_ints.end(); m++){
+		std::cout << horizontal_line << std::endl;
+		std::cout << "| ";
+		std::cout << std::left << std::setw (left_column_width) << std::setfill (' ') << m->first;
+		std::cout << " | ";
+		std::cout << std::right << std::setw (right_column_width) << std::setfill (' ') << m->second;
+		std::cout << " |" << std::endl;
+	}
+	std::cout << horizontal_line << std::endl;
+
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+}
 
 //=================================VECTORS OF VECTORS===================================
 
+void print_vector_of_vectors_of_ints(const std::string& message, const std::vector<std::vector<int> >& vector_of_vectors_of_ints){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl;
+
+	//find maximum length row (maximum number of colunms)
+	unsigned int maximum_length_row = 0;
+	for(unsigned int r = 0; r < vector_of_vectors_of_ints.size(); r++){
+		if(vector_of_vectors_of_ints[r].size() > maximum_length_row){
+			maximum_length_row = vector_of_vectors_of_ints[r].size();
+		}
+	}
+
+	//find the largest string in each column to use as the column width for that column
+	std::vector<unsigned int> maximum_length_per_col(maximum_length_row, 0);
+	for(unsigned int r = 0; r < vector_of_vectors_of_ints.size(); r++){
+		for(unsigned int c = 0; c < vector_of_vectors_of_ints[r].size(); c++){
+			if(number_of_digits(vector_of_vectors_of_ints[r][c]) > maximum_length_per_col[c]){
+				maximum_length_per_col[c] = number_of_digits(vector_of_vectors_of_ints[r][c]);
+			}
+		}
+	}
+
+	//determine the length of a table at each column width (for printing the line between)
+	std::vector<unsigned int> table_width_at_column(maximum_length_row, 0);
+	table_width_at_column[0] = 4 + maximum_length_per_col[0]; //this is the width of "|  |"
+	for(unsigned int t = 1; t < table_width_at_column.size(); t++){
+		table_width_at_column[t] = table_width_at_column[t-1] + maximum_length_per_col[t] + 3; //3 because ' ' on either side of the word and 1 for '|'
+	}
+	
+	//print things according to column widths (left alligned and 1 extra spaces for padding between colums)
+	for(unsigned int r = 0; r < vector_of_vectors_of_ints.size(); r++){
+		//print the line between rows
+		if(r != 0 && vector_of_vectors_of_ints[r-1].size() > vector_of_vectors_of_ints[r].size() ){
+			std::string line(table_width_at_column[vector_of_vectors_of_ints[r-1].size()-1], '-');
+			std::cout << line << std::endl;
+		}
+		else{
+			std::string line(table_width_at_column[vector_of_vectors_of_ints[r].size()-1], '-');
+			std::cout << line << std::endl;
+		}
+		
+		//print the beginning '|' before the line
+		std::cout << "| ";
+		//prnt the data
+		for(unsigned int c = 0; c < vector_of_vectors_of_ints[r].size() -1; c++){
+			std::cout << std::right << std::setw (maximum_length_per_col[c]) << std::setfill (' ') << vector_of_vectors_of_ints[r][c] << " | ";
+		}
+		//the last one in each row is done differently so there isn't a space after each printed line (more efficient than if statement)
+		std::cout << std::right << std::setw (maximum_length_per_col[vector_of_vectors_of_ints[r].size() -1]) << std::setfill (' ') << vector_of_vectors_of_ints[r][vector_of_vectors_of_ints[r].size() -1];
+		std::cout << " |" << std::endl;
+
+	}
+	std::string line(table_width_at_column[vector_of_vectors_of_ints[vector_of_vectors_of_ints.size()-1].size()-1], '-');
+	std::cout << line << std::endl;
+
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+}
+
+void print_vector_of_vectors_of_unsigned_ints(const std::string& message, const std::vector<std::vector<unsigned int> >& vector_of_vectors_of_unsigned_ints){
+	std::vector<std::vector<int> > vector_of_vectors_of_ints;
+	for(unsigned int r = 0; r < vector_of_vectors_of_unsigned_ints.size(); r++){
+		for(unsigned int c = 0; c < vector_of_vectors_of_unsigned_ints[r].size(); c++){
+			vector_of_vectors_of_ints[r].push_back((int)vector_of_vectors_of_unsigned_ints[r][c]);
+		}
+	}
+	print_vector_of_vectors_of_ints(message, vector_of_vectors_of_ints);
+}
 
 void print_vector_of_vectors_of_strings(const std::string& message, const std::vector<std::vector<std::string> >& vector_of_vectors_of_strings){
 	std::cout << TEST_CASE_SEPARATOR << std::endl;
@@ -355,8 +536,6 @@ void print_vector_of_vectors_of_strings(const std::string& message, const std::v
 			maximum_length_row = vector_of_vectors_of_strings[r].size();
 		}
 	}
-
-
 
 	//find the largest string in each column to use as the column width for that column
 	std::vector<unsigned int> maximum_length_per_col(maximum_length_row, 0);
@@ -399,76 +578,6 @@ void print_vector_of_vectors_of_strings(const std::string& message, const std::v
 
 	}
 	std::string line(table_width_at_column[vector_of_vectors_of_strings[vector_of_vectors_of_strings.size()-1].size()-1], '-');
-	std::cout << line << std::endl;
-
-	std::cout << TEST_CASE_SEPARATOR << std::endl;
-}
-
-unsigned int number_of_digits(int number){
-	int digits = 0;
-	if(number < 0) digits++; // for the '-' sign
-	while(number != 0){
-		number /= 10;
-		digits++;
-	}
-	return digits;
-}
-
-void print_vector_of_vectors_of_ints(const std::string& message, const std::vector<std::vector<int> >& vector_of_vectors_of_ints){
-	std::cout << TEST_CASE_SEPARATOR << std::endl;
-	std::cout << message << std::endl;
-
-	//find maximum length row (maximum number of colunms)
-	unsigned int maximum_length_row = 0;
-	for(unsigned int r = 0; r < vector_of_vectors_of_ints.size(); r++){
-		if(vector_of_vectors_of_ints[r].size() > maximum_length_row){
-			maximum_length_row = vector_of_vectors_of_ints[r].size();
-		}
-	}
-
-
-
-	//find the largest string in each column to use as the column width for that column
-	std::vector<unsigned int> maximum_length_per_col(maximum_length_row, 0);
-	for(unsigned int r = 0; r < vector_of_vectors_of_ints.size(); r++){
-		for(unsigned int c = 0; c < vector_of_vectors_of_ints[r].size(); c++){
-			if(number_of_digits(vector_of_vectors_of_ints[r][c]) > maximum_length_per_col[c]){
-				maximum_length_per_col[c] = number_of_digits(vector_of_vectors_of_ints[r][c]);
-			}
-		}
-	}
-
-	//determine the length of a table at each column width (for printing the line between)
-	std::vector<unsigned int> table_width_at_column(maximum_length_row, 0);
-	table_width_at_column[0] = 4 + maximum_length_per_col[0]; //this is the width of "|  |"
-	for(unsigned int t = 1; t < table_width_at_column.size(); t++){
-		table_width_at_column[t] = table_width_at_column[t-1] + maximum_length_per_col[t] + 3; //3 because ' ' on either side of the word and 1 for '|'
-	}
-	
-	//print things according to column widths (left alligned and 1 extra spaces for padding between colums)
-	for(unsigned int r = 0; r < vector_of_vectors_of_ints.size(); r++){
-		//print the line between rows
-		if(r != 0 && vector_of_vectors_of_ints[r-1].size() > vector_of_vectors_of_ints[r].size() ){
-			std::string line(table_width_at_column[vector_of_vectors_of_ints[r-1].size()-1], '-');
-			std::cout << line << std::endl;
-		}
-		else{
-			std::string line(table_width_at_column[vector_of_vectors_of_ints[r].size()-1], '-');
-			std::cout << line << std::endl;
-		}
-		
-		//print the beginning '|' before the line
-		std::cout << "| ";
-		//prnt the data
-		for(unsigned int c = 0; c < vector_of_vectors_of_ints[r].size() -1; c++){
-			std::cout << std::left << std::setw (maximum_length_per_col[c]) << std::setfill (' ') << vector_of_vectors_of_ints[r][c] << " | ";
-		}
-		//the last one in each row is done differently so there isn't a space after each printed line (more efficient than if statement)
-		std::cout << std::left << std::setw (maximum_length_per_col[vector_of_vectors_of_ints[r].size() -1]) << std::setfill (' ') << vector_of_vectors_of_ints[r][vector_of_vectors_of_ints[r].size() -1];
-		std::cout << " |" << std::endl;
-
-	}
-	std::string line(table_width_at_column[vector_of_vectors_of_ints[vector_of_vectors_of_ints.size()-1].size()-1], '-');
 	std::cout << line << std::endl;
 
 	std::cout << TEST_CASE_SEPARATOR << std::endl;
