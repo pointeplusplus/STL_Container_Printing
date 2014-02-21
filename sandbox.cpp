@@ -51,6 +51,7 @@ void print_set_of_doubles(const std::string& message, const std::set<double>& se
 
 void print_map_of_ints_and_ints(const std::string& message, const std::map<int, int>& map_of_ints_and_ints);
 void print_map_of_strings_and_ints(const std::string& message, const std::map<std::string, int>& map_of_strings_and_ints);
+void print_map_of_strings_and_strings(const std::string& message, const std::map<std::string, std::string>& map_of_strings_and_strings);
 
 //Two Dimensions
 void print_vector_of_vectors_of_ints(const std::string& message, const std::vector<std::vector<int> >& vector_of_vectors_of_ints);
@@ -161,6 +162,14 @@ int main(int argc, char* argv[]){
 	map_of_strings_and_ints.insert(std::make_pair("om nom nom",579));
 
 	print_map_of_strings_and_ints("testing map print for strings and ints", map_of_strings_and_ints);
+
+	std::map<std::string, std::string> map_of_strings_and_strings;
+	map_of_strings_and_strings.insert(std::make_pair("string", "this is the second column"));
+	map_of_strings_and_strings.insert(std::make_pair("this is a long string", "testing another function"));
+	map_of_strings_and_strings.insert(std::make_pair("moo", "meow"));
+	map_of_strings_and_strings.insert(std::make_pair("om nom nom", "yup"));
+
+	print_map_of_strings_and_strings("testing map print for strings and strings", map_of_strings_and_strings);
 
 	//print_vector_of_ints("vector initialized given number and filler", vector_of_ints);
 	
@@ -448,6 +457,42 @@ void print_map_of_strings_and_ints(const std::string& message, const std::map<st
 		std::cout << std::left << std::setw (left_column_width) << std::setfill (' ') << m->first;
 		std::cout << " | ";
 		std::cout << std::right << std::setw (right_column_width) << std::setfill (' ') << m->second;
+		std::cout << " |" << std::endl;
+	}
+	std::cout << horizontal_line << std::endl;
+
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+}
+
+void print_map_of_strings_and_strings(const std::string& message, const std::map<std::string, std::string>& map_of_strings_and_strings){
+	std::cout << TEST_CASE_SEPARATOR << std::endl;
+	std::cout << message << std::endl;
+
+	unsigned int left_column_width = 0;
+	unsigned int right_column_width = 0;
+	unsigned int first_max_size;
+	unsigned int second_max_size;
+
+	//TODO: since maps sort, the one with the largest digits is either the first or last (negative or positive largest)
+	//loop through and find what the column widths need to be (largest)
+	for(std::map<std::string, std::string>::const_iterator m = map_of_strings_and_strings.begin(); m != map_of_strings_and_strings.end(); m++){
+		first_max_size = (m->first).size();
+		second_max_size = (m->second).size();
+		//TODO: switch to using std::max
+		if(first_max_size > left_column_width){
+			left_column_width = first_max_size;
+		}
+		if(second_max_size > right_column_width){
+			right_column_width = second_max_size;
+		}
+	}
+	std::string horizontal_line(left_column_width+right_column_width+7, '-'); //3 for '|', 4 for ' '
+	for(std::map<std::string, std::string>::const_iterator m = map_of_strings_and_strings.begin(); m != map_of_strings_and_strings.end(); m++){
+		std::cout << horizontal_line << std::endl;
+		std::cout << "| ";
+		std::cout << std::left << std::setw (left_column_width) << std::setfill (' ') << m->first;
+		std::cout << " | ";
+		std::cout << std::left << std::setw (right_column_width) << std::setfill (' ') << m->second;
 		std::cout << " |" << std::endl;
 	}
 	std::cout << horizontal_line << std::endl;
